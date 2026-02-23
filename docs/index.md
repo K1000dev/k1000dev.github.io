@@ -1,7 +1,7 @@
 # Synthèse Git
 
 <br>
-> Synthèse Git faites par moi en feat. avec l'IA parce que nos profs ont la flemme d'enseigner
+> Synthèse Git faites par moi en feat. avec l'IA (jugez pas)
 <br>
 
 > Elle n'est pas complète à 100% mais j'estime qu'il y a l'essentiel pour éviter de faire de la merde
