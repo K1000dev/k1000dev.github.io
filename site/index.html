@@ -1,0 +1,1079 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guide pratique pour utiliser Git en groupe">
+      
+      
+        <meta name="author" content="K1000">
+      
+      
+        <link rel="canonical" href="https://k1000.github.io/">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Synthèse Git</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#synthese-git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Synthèse Git" class="md-header__button md-logo" aria-label="Synthèse Git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Synthèse Git
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Accueil
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Synthèse Git" class="md-nav__button md-logo" aria-label="Synthèse Git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Synthèse Git
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Accueil
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accueil
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-comprendre-larchitecture-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      📐 1. Comprendre l’architecture Git
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-workflow-standard-pour-ajouter-une-fonctionnalite" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗂️ 2. Workflow standard pour ajouter une fonctionnalité
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗂️ 2. Workflow standard pour ajouter une fonctionnalité">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapes-dans-lordre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étapes dans l’ordre
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étapes dans l’ordre">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-se-placer-sur-la-branche-principale" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Se placer sur la branche principale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-recuperer-la-derniere-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Récupérer la dernière version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-creer-une-branche-dediee" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Créer une branche dédiée
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ajouter-les-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Ajouter les modifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-creer-un-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Créer un commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pousser-la-branche" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Pousser la branche
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-creer-une-merge-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Créer une Merge Request
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mettre-a-jour-sa-branche-avec-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 3. Mettre à jour sa branche avec main
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conflits" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚔️ 4. Conflits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-les-tags-versions-stables" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷 5. Les Tags (versions stables)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷 5. Les Tags (versions stables)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-un-tag-annote-recommande" class="md-nav__link">
+    <span class="md-ellipsis">
+      Créer un tag annoté (recommandé)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lister-les-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lister les tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoyer-les-tags-au-serveur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoyer les tags au serveur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-un-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supprimer un tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-revenir-a-une-version-precedente" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⏪ 6. Revenir à une version précédente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⏪ 6. Revenir à une version précédente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differences-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Différences importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-regles-dor-en-projet-de-groupe" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 7. Règles d’or en projet de groupe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-structure-mentale-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧭 8. Structure mentale de Git
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vocabulaire-essentiel-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Vocabulaire essentiel Git
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-comprendre-larchitecture-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      📐 1. Comprendre l’architecture Git
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-workflow-standard-pour-ajouter-une-fonctionnalite" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗂️ 2. Workflow standard pour ajouter une fonctionnalité
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗂️ 2. Workflow standard pour ajouter une fonctionnalité">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapes-dans-lordre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étapes dans l’ordre
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étapes dans l’ordre">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-se-placer-sur-la-branche-principale" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Se placer sur la branche principale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-recuperer-la-derniere-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Récupérer la dernière version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-creer-une-branche-dediee" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Créer une branche dédiée
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ajouter-les-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Ajouter les modifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-creer-un-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Créer un commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pousser-la-branche" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Pousser la branche
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-creer-une-merge-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Créer une Merge Request
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mettre-a-jour-sa-branche-avec-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 3. Mettre à jour sa branche avec main
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conflits" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚔️ 4. Conflits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-les-tags-versions-stables" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷 5. Les Tags (versions stables)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷 5. Les Tags (versions stables)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-un-tag-annote-recommande" class="md-nav__link">
+    <span class="md-ellipsis">
+      Créer un tag annoté (recommandé)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lister-les-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lister les tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoyer-les-tags-au-serveur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoyer les tags au serveur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-un-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supprimer un tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-revenir-a-une-version-precedente" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⏪ 6. Revenir à une version précédente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⏪ 6. Revenir à une version précédente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differences-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Différences importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-regles-dor-en-projet-de-groupe" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 7. Règles d’or en projet de groupe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-structure-mentale-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧭 8. Structure mentale de Git
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vocabulaire-essentiel-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Vocabulaire essentiel Git
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="synthese-git">Synthèse Git<a class="headerlink" href="#synthese-git" title="Permanent link">&para;</a></h1>
+<p><br></p>
+<blockquote>
+<p>Synthèse Git faites par moi en feat. avec l'IA parce que nos profs ont la flemme d'enseigner
+<br></p>
+<p>Elle n'est pas complète à 100% mais j'estime qu'il y a l'essentiel pour éviter de faire de la merde</p>
+</blockquote>
+<hr />
+<h2 id="1-comprendre-larchitecture-git">📐 1. Comprendre l’architecture Git<a class="headerlink" href="#1-comprendre-larchitecture-git" title="Permanent link">&para;</a></h2>
+<details class="info">
+<summary>Git est distribué</summary>
+<p>Chaque développeur possède une copie complète du projet.</p>
+<ul>
+<li><code>Repository</code> : dossier contenant l’historique</li>
+<li><code>Commit</code> : snapshot du projet</li>
+<li><code>Branch</code> : ligne de développement</li>
+<li><code>main</code> : branche principale</li>
+<li><code>origin</code> : serveur distant (GitHub / GitLab)</li>
+</ul>
+</details>
+<hr />
+<h2 id="2-workflow-standard-pour-ajouter-une-fonctionnalite">🗂️ 2. Workflow standard pour ajouter une fonctionnalité<a class="headerlink" href="#2-workflow-standard-pour-ajouter-une-fonctionnalite" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Lorsque vous voulez ajouter des fonctionnalités à partir d'un projet qui a été mis à jour</p>
+</blockquote>
+<h3 id="etapes-dans-lordre">Étapes dans l’ordre<a class="headerlink" href="#etapes-dans-lordre" title="Permanent link">&para;</a></h3>
+<h4 id="1-se-placer-sur-la-branche-principale">1. Se placer sur la branche principale<a class="headerlink" href="#1-se-placer-sur-la-branche-principale" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>main
+</code></pre></div>
+<h4 id="2-recuperer-la-derniere-version">2. Récupérer la dernière version<a class="headerlink" href="#2-recuperer-la-derniere-version" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<details class="info explication">
+<summary>Info</summary>
+<ul>
+<li>
+<p><code>pull</code> = fetch + merge</p>
+<blockquote>
+<p><code>git pull</code> télécharge les nouveaux commits du serveur (<code>fetch</code>) puis les fusionne automatiquement dans ta branche actuelle (<code>merge</code>). Autrement dit, il récupère les mises à jour distantes et les intègre chez toi en une seule commande.</p>
+</blockquote>
+</li>
+<li>
+<p><code>origin</code> = dépôt distant</p>
+</li>
+<li><code>main</code> = branche cible</li>
+</ul>
+</details>
+<h4 id="3-creer-une-branche-dediee">3. Créer une branche dédiée<a class="headerlink" href="#3-creer-une-branche-dediee" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/login
+</code></pre></div>
+<ul>
+<li><code>-b</code> : crée et change de branche</li>
+</ul>
+<p>Toujours créer une branche hors <code>main</code>.
+<br></p>
+<h4 id="4-ajouter-les-modifications">4. Ajouter les modifications<a class="headerlink" href="#4-ajouter-les-modifications" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
+<ul>
+<li><code>add</code> : place les fichiers dans la <em>[<abbr title="Espace intermédiaire où Git stocke les fichiers ajoutés avec `git add` avant le commit.">zone de staging</abbr>]</em></li>
+</ul>
+<hr />
+<h4 id="5-creer-un-commit">5. Créer un commit<a class="headerlink" href="#5-creer-un-commit" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout du système de login&quot;</span>
+</code></pre></div>
+<ul>
+<li><code>-m</code> : message du commit</li>
+</ul>
+<hr />
+<h4 id="6-pousser-la-branche">6. Pousser la branche<a class="headerlink" href="#6-pousser-la-branche" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature/login
+</code></pre></div>
+<ul>
+<li><code>-u</code> ou <code>--set-upstream</code> : lie la branche locale à la branche distante</li>
+<li>permet ensuite d’utiliser simplement <code>git push</code></li>
+</ul>
+<hr />
+<h4 id="7-creer-une-merge-request">7. Créer une Merge Request<a class="headerlink" href="#7-creer-une-merge-request" title="Permanent link">&para;</a></h4>
+<p>Sur GitLab :</p>
+<ul>
+<li>Ouvrir une Pull Request / Merge Request</li>
+<li>Vérification</li>
+<li>Validation</li>
+<li>Merge dans <code>main</code></li>
+</ul>
+<hr />
+<h2 id="3-mettre-a-jour-sa-branche-avec-main">🔄 3. Mettre à jour sa branche avec main<a class="headerlink" href="#3-mettre-a-jour-sa-branche-avec-main" title="Permanent link">&para;</a></h2>
+<p>Avant de continuer à travailler :</p>
+<p>1.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<p>2.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>feature/login
+git<span class="w"> </span>merge<span class="w"> </span>main
+</code></pre></div>
+<p>Résoudre les conflits si nécessaire.</p>
+<hr />
+<h2 id="4-conflits">⚔️ 4. Conflits<a class="headerlink" href="#4-conflits" title="Permanent link">&para;</a></h2>
+<p>Git marque les conflits :</p>
+<div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+code local
+=======
+code distant
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
+</code></pre></div>
+<p>Résoudre manuellement puis :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit
+</code></pre></div>
+<details>
+<summary>Eviter les merge conflicts</summary>
+<p>Pas de miracles...</p>
+<ul>
+<li>Communication : Dire sur quoi on travaille et ou on travaille</li>
+<li>Commit : Souvent (Même pour de la merde)</li>
+<li>Synchro souvent : A chaque début de taff, git pull</li>
+<li>
+<p>Petites branches -&gt; Pas une branche générale pour plusieurs fonctionnalités</p>
+<blockquote>
+<p>Ex. <code>page-login</code> -&gt; login pas login + 40 formulaires </p>
+</blockquote>
+</li>
+</ul>
+</details>
+<hr />
+<h2 id="5-les-tags-versions-stables">🏷 5. Les Tags (versions stables)<a class="headerlink" href="#5-les-tags-versions-stables" title="Permanent link">&para;</a></h2>
+<p>Les tags servent à marquer une version importante.</p>
+<p>Exemples :</p>
+<ul>
+<li><code>v1.0.0</code></li>
+<li><code>v2.1.3</code></li>
+</ul>
+<hr />
+<h3 id="creer-un-tag-annote-recommande">Créer un tag annoté (recommandé)<a class="headerlink" href="#creer-un-tag-annote-recommande" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Version stable&quot;</span>
+</code></pre></div>
+<ul>
+<li><code>-a</code> : annotated</li>
+<li><code>-m</code> : message associé</li>
+</ul>
+<hr />
+<h3 id="lister-les-tags">Lister les tags<a class="headerlink" href="#lister-les-tags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag
+</code></pre></div>
+<hr />
+<h3 id="envoyer-les-tags-au-serveur">Envoyer les tags au serveur<a class="headerlink" href="#envoyer-les-tags-au-serveur" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+</code></pre></div>
+<hr />
+<h3 id="supprimer-un-tag">Supprimer un tag<a class="headerlink" href="#supprimer-un-tag" title="Permanent link">&para;</a></h3>
+<p>Local :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>v1.0.0
+</code></pre></div>
+<p>Distant :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--delete<span class="w"> </span>v1.0.0
+</code></pre></div>
+<hr />
+<h2 id="6-revenir-a-une-version-precedente">⏪ 6. Revenir à une version précédente<a class="headerlink" href="#6-revenir-a-une-version-precedente" title="Permanent link">&para;</a></h2>
+<p>Voir les tags :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag
+</code></pre></div>
+<p>Se placer sur un tag :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>v1.0.0
+</code></pre></div>
+<p>Attention : mode <em>detached HEAD</em>.</p>
+<p>Créer une branche depuis un tag :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>hotfix<span class="w"> </span>v1.0.0
+</code></pre></div>
+<hr />
+<h3 id="differences-importantes">Différences importantes<a class="headerlink" href="#differences-importantes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>git revert &lt;commit&gt;</code><br />
+  Annule un commit proprement (historique conservé)</p>
+</li>
+<li>
+<p><code>git reset --hard &lt;commit&gt;</code><br />
+  Revient en arrière en supprimant l’historique après ce commit <br>
+  (dangereux - faites pas ça svp 🤦‍♂️)</p>
+</li>
+<li>
+<p><code>-f</code> ou <code>--force</code><br />
+  Force un push (écrase l’historique distant).<br />
+  À éviter sur <code>main</code>. <br>
+  (En cas de nécessité majeure, réflechissez 5 fois avant)</p>
+</li>
+</ul>
+<hr />
+<h2 id="7-regles-dor-en-projet-de-groupe">📋 7. Règles d’or en projet de groupe<a class="headerlink" href="#7-regles-dor-en-projet-de-groupe" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Ne jamais commit directement sur <code>main</code></li>
+<li>Toujours <code>pull</code> avant de commencer</li>
+<li>Faire des commits petits et clairs</li>
+<li>Nommer les branches :<ul>
+<li><code>feature/...</code></li>
+<li><code>fix/...</code></li>
+<li><code>hotfix/...</code></li>
+</ul>
+</li>
+<li>Ne jamais utiliser <code>--force</code> sur <code>main</code> <br>
+(Sauf si t'es sur de toi le reuf mais je pars en vacances en août donc évite)</li>
+</ul>
+<hr />
+<h2 id="8-structure-mentale-de-git">🧭 8. Structure mentale de Git<a class="headerlink" href="#8-structure-mentale-de-git" title="Permanent link">&para;</a></h2>
+<p>Git fonctionne comme un graphe de commits.</p>
+<ul>
+<li>Chaque commit pointe vers le précédent</li>
+<li>Les branches sont des pointeurs vers des commits</li>
+<li><code>HEAD</code> est le pointeur actuel</li>
+</ul>
+<p>Comprendre cela évite la majorité des erreurs.</p>
+<hr />
+<h2 id="vocabulaire-essentiel-git">📚 Vocabulaire essentiel Git<a class="headerlink" href="#vocabulaire-essentiel-git" title="Permanent link">&para;</a></h2>
+<details class="info">
+<summary>Repository (repo)</summary>
+<p>Dossier contenant le projet et tout son historique de versions.</p>
+</details>
+<details class="info">
+<summary>Commit</summary>
+<p>Enregistrement d’un état précis du projet à un instant donné.</p>
+</details>
+<details class="info">
+<summary>Branch (branche)</summary>
+<p>Ligne de développement indépendante permettant de travailler sans modifier <code>main</code>.</p>
+</details>
+<details class="info">
+<summary>main</summary>
+<p>Branche principale du projet. Elle doit toujours rester stable.</p>
+</details>
+<details class="info">
+<summary>Checkout</summary>
+<p>Action de changer de branche ou de se déplacer vers un commit.</p>
+</details>
+<details class="info">
+<summary>Add</summary>
+<p>Commande (<code>git add</code>) qui place des fichiers dans la <abbr title="Espace intermédiaire où Git stocke les fichiers ajoutés avec `git add` avant le commit.">zone de staging</abbr> avant un commit.</p>
+</details>
+<details class="info">
+<summary>Zone de staging</summary>
+<p>Espace intermédiaire où Git prépare les fichiers avant de créer un commit.</p>
+</details>
+<details class="info">
+<summary>Push</summary>
+<p>Envoie tes commits locaux vers le serveur distant.</p>
+</details>
+<details class="info">
+<summary>Fetch</summary>
+<p>Télécharge les nouveaux commits depuis le serveur sans les fusionner.</p>
+</details>
+<details class="info">
+<summary>Pull</summary>
+<p>Combine <code>fetch</code> + <code>merge</code> : récupère les nouveautés et les intègre automatiquement.</p>
+</details>
+<details class="info">
+<summary>Merge</summary>
+<p>Fusionne deux branches ensemble.</p>
+</details>
+<details class="info">
+<summary>Merge Request / Pull Request</summary>
+<p>Demande officielle pour intégrer une branche dans <code>main</code>.</p>
+</details>
+<details class="info">
+<summary>Merge conflict</summary>
+<p>Conflit qui apparaît lorsque deux personnes modifient la même zone d’un fichier.</p>
+</details>
+<details class="info">
+<summary>Origin</summary>
+<p>Nom par défaut du dépôt distant (serveur GitHub/GitLab).</p>
+</details>
+<details class="info">
+<summary>Tag</summary>
+<p>Étiquette marquant une version importante du projet (ex: <code>v1.0.0</code>).</p>
+</details>
+<details class="info">
+<summary>HEAD</summary>
+<p>Pointeur indiquant la position actuelle dans l’historique Git.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.expand", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
