@@ -57,7 +57,8 @@ git checkout -b feature/login
 - `-b` : crée et change de branche
 
 !!! danger
-🛑 Toujours créer une branche hors `main`.
+    🛑 Toujours créer une branche hors `main`.
+
 <br>
 
 
